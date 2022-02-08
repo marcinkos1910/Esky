@@ -9,6 +9,8 @@ services:
     image: library/postgres:14.1-alpine
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
+    env_file:
+      - ./envs/.env.db
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     networks:
@@ -26,7 +28,7 @@ services:
   backend:
     build:
       context: .
-      dockerfile: .Dockerfile
+      dockerfile: Dockerfile
     image: esky:1.0
     env_file:
       - ./envs/.env

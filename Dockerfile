@@ -15,8 +15,10 @@ RUN apk update \
     && pip install --no-cache-dir pipenv \
     && pipenv install --system \
     && apk del --no-cache .build-deps
+    && pipenv install flake8 \
+    && mkdir -p ./docs/Flake8/
 
-COPY . $APP_CODE/
+COPY . ./
 
 FROM build AS development
 CMD flake8 -v --ignore=E501 --count --output-file=./docs/Flake8/flake8.log
