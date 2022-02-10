@@ -23,13 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-5wqg5z%j=d384v)58mg4%(!ip80_5i)o(65294yd%2d6oilcg6'
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+# SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY") - wlaczyc z dockerem
+SECRET_KEY = 'django-insecure-sk&o3)b1p87(p)t_(o@2bknog5l@u!tiraw0cizod=*tpp5m66'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", 0)
+# DEBUG = os.environ.get("DEBUG", 0) - wlaczyc z dockerem
+DEBUG = True
 
-# ALLOWED_HOSTS = ["0.0.0.0"]
-ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")] - wlaczyc z dockerem
 
 
 # Application definition
@@ -41,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'search.apps.SearchConfig',
 ]
 
 MIDDLEWARE = [
